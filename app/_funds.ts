@@ -24,6 +24,19 @@ export const FUND_NAMES: Record<string, string> = {
   fireside: "Fireside",
   prime: "Prime Venture Partners",
   "info-edge": "Info Edge Ventures",
+  acumen: "Acumen",
+  chiratae: "Chiratae",
+  lightrock: "Lightrock",
+  tvs: "TVS Capital",
+  trident: "Trident Growth",
+  avataar: "Avataar",
+  "iron-pillar": "Iron Pillar",
+  "eight-roads": "Eight Roads",
+  waterbridge: "WaterBridge",
+  ivycap: "IvyCap",
+  chryscapital: "ChrysCapital",
+  steadview: "Steadview",
+  artha: "Artha",
 };
 
 export function fundDisplayName(slug: string): string {
