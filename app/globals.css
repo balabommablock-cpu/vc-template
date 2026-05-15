@@ -1,0 +1,1169 @@
+/* Base reset + shared body styles */
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body { margin: 0; padding: 0; }
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
+  font-feature-settings: "kern", "liga", "ss01";
+  font-size: 0.95rem;
+  line-height: 1.6;
+  letter-spacing: -0.005em;
+  background: var(--cs-cream, #FAF5EC);
+  color: var(--cs-ink, #1A1817);
+}
+
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; }
+
+::selection {
+  background: var(--cs-ink, #1A1817);
+  color: var(--cs-cream, #FAF5EC);
+}
+
+/* ════════════════════════════════════════════════════════════════════
+   CASSIE-STYLE — used by /blume
+   ════════════════════════════════════════════════════════════════════ */
+
+:root {
+  --cs-cream: #FAF5EC;
+  --cs-cream-deep: #F0E9DA;
+  --cs-sage: #C7D9C5;
+  --cs-sage-deep: #2E4A2A;
+  --cs-butter: #FBE89C;
+  --cs-mauve: #D4C5DE;
+  --cs-mauve-deep: #5A3F6E;
+  --cs-mint: #B8DCC8;
+  --cs-mint-deep: #1F4D3A;
+  --cs-ink: #1A1817;
+  --cs-ink-2: #2A2624;
+  --cs-ink-3: #6B5847;
+}
+
+.cs-page {
+  background: var(--cs-cream);
+  color: var(--cs-ink);
+  min-height: 100vh;
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+.cs-page * { box-sizing: border-box; }
+
+/* Top nav */
+.cs-nav {
+  position: absolute;
+  top: 1.6rem;
+  right: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+  z-index: 30;
+}
+.cs-nav a {
+  font-family: var(--font-sans);
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--cs-ink);
+  text-transform: lowercase;
+  border-bottom: 2px solid transparent;
+  padding-bottom: 2px;
+  transition: border-color 0.15s ease;
+}
+.cs-nav a:hover {
+  color: var(--cs-ink);
+  border-bottom-color: var(--cs-ink);
+}
+.cs-brand {
+  position: absolute;
+  top: 1.6rem;
+  left: 2rem;
+  z-index: 30;
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: lowercase;
+  letter-spacing: 0.02em;
+  color: var(--cs-ink);
+  border-bottom: none;
+}
+.cs-brand:hover { color: var(--cs-ink-3); border-bottom: none; }
+
+/* HERO — split screen */
+.cs-hero {
+  display: grid;
+  grid-template-columns: 1fr;
+  min-height: 100vh;
+}
+@media (min-width: 900px) {
+  .cs-hero { grid-template-columns: 42% 58%; }
+}
+.cs-hero-left {
+  background: var(--cs-cream);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8rem 2rem 4rem;
+  position: relative;
+  border-bottom: 2px solid var(--cs-ink);
+}
+@media (min-width: 900px) {
+  .cs-hero-left {
+    border-bottom: none;
+    border-right: 2px solid var(--cs-ink);
+  }
+}
+.cs-hero-right {
+  background: var(--cs-sage);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 8rem 2rem 5rem;
+}
+@media (min-width: 900px) {
+  .cs-hero-right { padding: 6rem 4rem 5rem; }
+}
+.cs-hero-greeting {
+  font-family: var(--font-cursive);
+  font-weight: 500;
+  font-size: clamp(1.6rem, 2.8vw, 2.4rem);
+  color: var(--cs-sage-deep);
+  margin-bottom: 1.4rem;
+  transform: rotate(-2deg);
+  display: inline-block;
+  align-self: flex-start;
+}
+.cs-hero-headline {
+  font-family: var(--font-sans);
+  font-weight: 900;
+  font-size: clamp(2.4rem, 5.8vw, 4.6rem);
+  line-height: 1.04;
+  letter-spacing: -0.03em;
+  color: var(--cs-ink);
+  max-width: 18ch;
+}
+.cs-hero-headline .cursive {
+  font-family: var(--font-cursive);
+  font-weight: 500;
+  font-size: 1.05em;
+  letter-spacing: 0;
+  color: var(--cs-mauve-deep);
+  display: inline-block;
+  transform: rotate(-1deg);
+  margin: 0 0.05em;
+}
+
+/* The illustrated browser window in the hero-left */
+.cs-window {
+  background: white;
+  border: 2px solid var(--cs-ink);
+  border-radius: 8px;
+  max-width: 22rem;
+  width: 100%;
+  box-shadow: 7px 7px 0 var(--cs-ink);
+  transform: rotate(-1.5deg);
+  overflow: hidden;
+}
+.cs-window-bar {
+  background: var(--cs-cream-deep);
+  padding: 0.55rem 0.85rem;
+  border-bottom: 2px solid var(--cs-ink);
+  display: flex;
+  align-items: center;
+  gap: 0.42rem;
+}
+.cs-window-dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: var(--cs-ink);
+}
+.cs-window-body {
+  padding: 1.1rem 1.2rem 1.3rem;
+}
+.cs-window-from {
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  color: var(--cs-ink-3);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+}
+.cs-window-subject {
+  font-family: var(--font-sans);
+  font-weight: 800;
+  font-size: 1rem;
+  letter-spacing: -0.01em;
+  color: var(--cs-ink);
+  margin-bottom: 0.65rem;
+}
+.cs-window-line {
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  color: var(--cs-ink-2);
+  line-height: 1.5;
+  padding: 0.22rem 0;
+}
+.cs-window-line::before {
+  content: "→  ";
+  color: var(--cs-ink-3);
+}
+
+/* SECTIONS — full-bleed colored */
+.cs-section {
+  padding: 6rem 2rem;
+  position: relative;
+  border-top: 2px solid var(--cs-ink);
+}
+.cs-section--butter { background: var(--cs-butter); }
+.cs-section--mauve { background: var(--cs-mauve); }
+.cs-section--mint { background: var(--cs-mint); }
+.cs-section--cream { background: var(--cs-cream); }
+
+.cs-section-inner {
+  max-width: 64rem;
+  margin: 0 auto;
+}
+.cs-section-h {
+  font-family: var(--font-sans);
+  font-weight: 900;
+  font-size: clamp(3.4rem, 9vw, 6.5rem);
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  color: var(--cs-ink);
+  margin-bottom: 2.6rem;
+}
+.cs-section-h .cursive {
+  font-family: var(--font-cursive);
+  font-weight: 500;
+  font-size: 0.85em;
+  letter-spacing: 0;
+  color: var(--cs-ink-3);
+  display: inline-block;
+  transform: rotate(-2deg);
+  margin: 0 0.05em;
+}
+.cs-section-body {
+  font-family: var(--font-sans);
+  font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+  line-height: 1.55;
+  color: var(--cs-ink-2);
+  max-width: 50rem;
+  margin-bottom: 1.4rem;
+}
+.cs-section-body em {
+  font-family: var(--font-cursive);
+  font-style: normal;
+  font-weight: 500;
+  color: var(--cs-ink);
+  font-size: 1.1em;
+}
+.cs-section-aside {
+  font-family: var(--font-cursive);
+  font-weight: 500;
+  font-size: clamp(1.4rem, 2.4vw, 1.85rem);
+  color: var(--cs-ink-3);
+  margin-top: 2rem;
+  transform: rotate(-1deg);
+  display: inline-block;
+  line-height: 1.3;
+}
+
+/* Browser-window card (used inside Build section for the Sunday Brief) */
+.cs-mock {
+  background: white;
+  border: 2px solid var(--cs-ink);
+  border-radius: 10px;
+  max-width: 44rem;
+  margin: 2.5rem 0 1.5rem;
+  box-shadow: 8px 8px 0 var(--cs-ink);
+  overflow: hidden;
+  transform: rotate(-0.8deg);
+}
+.cs-mock-bar {
+  background: var(--cs-cream-deep);
+  padding: 0.65rem 1rem;
+  border-bottom: 2px solid var(--cs-ink);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.cs-mock-body {
+  padding: 1.6rem 1.8rem 1.8rem;
+}
+.cs-mock-from {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--cs-ink-3);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  font-weight: 700;
+  margin-bottom: 0.45rem;
+}
+.cs-mock-subject {
+  font-family: var(--font-sans);
+  font-weight: 900;
+  font-size: 1.25rem;
+  letter-spacing: -0.015em;
+  color: var(--cs-ink);
+  margin-bottom: 1.3rem;
+  padding-bottom: 0.85rem;
+  border-bottom: 1px dashed var(--cs-cream-deep);
+}
+.cs-mock-h {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--cs-ink-3);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  font-weight: 700;
+  margin: 1rem 0 0.45rem;
+}
+.cs-mock-h:first-child { margin-top: 0; }
+.cs-mock-body ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.cs-mock-body li {
+  font-family: var(--font-sans);
+  font-size: 0.94rem;
+  color: var(--cs-ink-2);
+  line-height: 1.55;
+  padding: 0.18rem 0;
+}
+.cs-mock-body li::before {
+  content: "→  ";
+  color: var(--cs-ink-3);
+}
+.cs-mock-ask {
+  margin-top: 0.7rem;
+  padding: 0.85rem 1rem;
+  background: var(--cs-cream);
+  border-left: 3px solid var(--cs-mauve-deep);
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-style: italic;
+  color: var(--cs-ink);
+  border-radius: 0 6px 6px 0;
+}
+
+/* Skills — tilted cards */
+.cs-skills {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem 2.5rem;
+  margin: 3rem 0 0;
+}
+@media (min-width: 720px) {
+  .cs-skills { grid-template-columns: 1fr 1fr; gap: 2.5rem 3rem; }
+}
+.cs-skill {
+  background: white;
+  border: 2px solid var(--cs-ink);
+  border-radius: 12px;
+  padding: 1.8rem 1.8rem 1.8rem;
+  box-shadow: 6px 6px 0 var(--cs-ink);
+  position: relative;
+  transition: transform 0.2s ease;
+}
+.cs-skill:nth-child(1) { transform: rotate(-1.5deg); }
+.cs-skill:nth-child(2) { transform: rotate(1deg); }
+.cs-skill:nth-child(3) { transform: rotate(-0.6deg); }
+.cs-skill:nth-child(4) { transform: rotate(1.4deg); }
+.cs-skill:hover { transform: rotate(0deg) translate(-2px, -2px); }
+.cs-skill-num {
+  font-family: var(--font-cursive);
+  font-weight: 500;
+  font-size: 1.6rem;
+  color: var(--cs-mint-deep);
+  position: absolute;
+  top: -1.05rem;
+  left: 1.2rem;
+  background: var(--cs-mint);
+  padding: 0 0.55rem;
+  border: 2px solid var(--cs-ink);
+  border-radius: 6px;
+  line-height: 1.4;
+  transform: rotate(-4deg);
+}
+.cs-skill-h {
+  font-family: var(--font-sans);
+  font-weight: 900;
+  font-size: 1.2rem;
+  letter-spacing: -0.018em;
+  color: var(--cs-ink);
+  margin-bottom: 0.6rem;
+  line-height: 1.2;
+}
+.cs-skill-b {
+  font-family: var(--font-sans);
+  font-size: 0.93rem;
+  color: var(--cs-ink-2);
+  line-height: 1.55;
+  margin-bottom: 0.95rem;
+}
+.cs-skill-tag {
+  font-family: var(--font-cursive);
+  font-weight: 500;
+  font-size: 1.4rem;
+  display: inline-block;
+  line-height: 1.2;
+  transform: rotate(-2deg);
+}
+.cs-skill-tag--have { color: var(--cs-mint-deep); }
+.cs-skill-tag--half { color: #B85B00; }
+.cs-skill-tag--need { color: #9A2D2D; }
+
+/* Coffee CTA section */
+.cs-cta-row {
+  display: flex;
+  gap: 1rem;
+  margin: 2rem 0 0;
+  flex-wrap: wrap;
+}
+.cs-cta-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--cs-ink);
+  color: var(--cs-cream);
+  font-family: var(--font-sans);
+  font-weight: 800;
+  font-size: 1.1rem;
+  letter-spacing: -0.01em;
+  padding: 1rem 1.8rem;
+  border-radius: 100px;
+  border: 2px solid var(--cs-ink);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  text-decoration: none;
+}
+.cs-cta-button:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0 var(--cs-ink-3);
+  color: var(--cs-cream);
+  border-bottom: 2px solid var(--cs-ink);
+}
+.cs-cta-button--ghost {
+  background: transparent;
+  color: var(--cs-ink);
+}
+.cs-cta-button--ghost:hover {
+  background: var(--cs-ink);
+  color: var(--cs-cream);
+}
+
+/* Footer */
+.cs-foot {
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  color: var(--cs-ink-3);
+  letter-spacing: 0.05em;
+  padding: 3rem 2rem 4rem;
+  background: var(--cs-cream);
+  border-top: 2px solid var(--cs-ink);
+}
+.cs-foot a { color: var(--cs-ink); border-bottom: 1px solid var(--cs-ink-3); }
+
+/* ─── Journey timeline (4 stops, tilted cards) ───────────────────────── */
+.cs-journey {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.6rem;
+  margin: 2.8rem 0 0;
+}
+@media (min-width: 820px) {
+  .cs-journey {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.4rem;
+  }
+}
+.cs-stop {
+  background: white;
+  border: 2px solid var(--cs-ink);
+  border-radius: 10px;
+  padding: 1.3rem 1.3rem 1.4rem;
+  box-shadow: 5px 5px 0 var(--cs-ink);
+  transition: transform 0.2s ease;
+  position: relative;
+}
+.cs-stop:nth-child(1) { transform: rotate(-1.4deg); }
+.cs-stop:nth-child(2) { transform: rotate(0.8deg); }
+.cs-stop:nth-child(3) { transform: rotate(-0.6deg); }
+.cs-stop:nth-child(4) { transform: rotate(1.1deg); }
+.cs-stop:hover { transform: rotate(0) translate(-2px, -2px); }
+.cs-stop-year {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
+  color: var(--cs-ink-3);
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 0.45rem;
+}
+.cs-stop-company {
+  font-family: var(--font-sans);
+  font-size: 1.05rem;
+  font-weight: 900;
+  letter-spacing: -0.015em;
+  color: var(--cs-ink);
+  line-height: 1.18;
+  margin-bottom: 0.18rem;
+}
+.cs-stop-role {
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--cs-ink-2);
+  margin-bottom: 0.55rem;
+}
+.cs-stop-tag {
+  display: inline-block;
+  font-family: var(--font-cursive);
+  font-weight: 500;
+  font-size: 1.15rem;
+  color: var(--cs-mauve-deep);
+  margin-bottom: 0.7rem;
+  transform: rotate(-2deg);
+  line-height: 1.2;
+}
+.cs-stop-body {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  color: var(--cs-ink-2);
+  line-height: 1.5;
+}
+
+/* ─── Shipped number cards (5 colored, tilted) ───────────────────────── */
+.cs-shipped {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.4rem;
+  margin: 2.8rem 0 0;
+}
+@media (min-width: 900px) {
+  .cs-shipped { grid-template-columns: repeat(5, 1fr); gap: 1.4rem; }
+}
+.cs-num-card {
+  background: white;
+  border: 2px solid var(--cs-ink);
+  border-radius: 10px;
+  padding: 1.3rem 1.2rem 1.4rem;
+  box-shadow: 5px 5px 0 var(--cs-ink);
+  transition: transform 0.2s ease;
+}
+.cs-num-card:nth-child(1) {
+  transform: rotate(-1.6deg);
+  background: var(--cs-butter);
+}
+.cs-num-card:nth-child(2) {
+  transform: rotate(1deg);
+  background: var(--cs-mint);
+}
+.cs-num-card:nth-child(3) {
+  transform: rotate(-0.7deg);
+  background: var(--cs-mauve);
+}
+.cs-num-card:nth-child(4) {
+  transform: rotate(1.4deg);
+  background: var(--cs-sage);
+}
+.cs-num-card:nth-child(5) {
+  transform: rotate(-1.1deg);
+  background: var(--cs-butter);
+}
+.cs-num-card:hover { transform: rotate(0) translate(-2px, -2px); }
+.cs-big-num {
+  font-family: var(--font-sans);
+  font-size: clamp(1.7rem, 3.2vw, 2.3rem);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  color: var(--cs-ink);
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+.cs-num-label {
+  display: inline-block;
+  font-family: var(--font-cursive);
+  font-weight: 500;
+  font-size: 1.1rem;
+  color: var(--cs-ink);
+  margin-bottom: 0.55rem;
+  transform: rotate(-1deg);
+  line-height: 1.2;
+}
+.cs-num-context {
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  color: var(--cs-ink-2);
+  line-height: 1.5;
+  font-weight: 500;
+}
+
+/* Why-this-seat paragraphs (raw voice) */
+.cs-why p {
+  font-family: var(--font-sans);
+  font-size: clamp(1.05rem, 1.6vw, 1.2rem);
+  line-height: 1.6;
+  color: var(--cs-ink-2);
+  max-width: 56rem;
+  margin: 0 0 1.1rem;
+}
+.cs-why p:first-of-type {
+  font-family: var(--font-cursive);
+  font-weight: 500;
+  font-size: clamp(1.6rem, 2.6vw, 2rem);
+  color: var(--cs-ink);
+  transform: rotate(-1deg);
+  display: inline-block;
+  margin-bottom: 1.6rem;
+}
+
+/* Honest read */
+.cs-honest p {
+  font-family: var(--font-sans);
+  font-size: clamp(1.05rem, 1.55vw, 1.18rem);
+  line-height: 1.6;
+  color: var(--cs-ink-2);
+  max-width: 56rem;
+  margin: 0 0 1.1rem;
+}
+.cs-honest p:last-child {
+  font-family: var(--font-cursive);
+  font-weight: 500;
+  font-size: clamp(1.4rem, 2.2vw, 1.8rem);
+  color: var(--cs-ink);
+  transform: rotate(-1deg);
+  display: inline-block;
+  margin-top: 1rem;
+}
+
+/* ─── Build first: 3 use-case cards ─────────────────────────────────── */
+.cs-cases {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin: 2.4rem 0 2rem;
+}
+@media (min-width: 760px) {
+  .cs-cases { grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
+}
+.cs-case {
+  background: white;
+  border: 2px solid var(--cs-ink);
+  border-radius: 8px;
+  padding: 1.2rem 1.25rem 1.3rem;
+  box-shadow: 4px 4px 0 var(--cs-ink);
+  position: relative;
+  transition: transform 0.2s ease;
+}
+.cs-case:nth-child(1) { transform: rotate(-0.8deg); }
+.cs-case:nth-child(2) { transform: rotate(0.5deg); background: var(--cs-butter); }
+.cs-case:nth-child(3) { transform: rotate(-0.4deg); }
+.cs-case:hover { transform: rotate(0) translate(-2px, -2px); }
+.cs-case-n {
+  font-family: var(--font-cursive);
+  font-weight: 500;
+  font-size: 1.3rem;
+  color: var(--cs-mauve-deep);
+  display: inline-block;
+  transform: rotate(-2deg);
+  margin-bottom: 0.4rem;
+  line-height: 1;
+}
+.cs-case-h {
+  font-family: var(--font-sans);
+  font-weight: 900;
+  font-size: 1.05rem;
+  letter-spacing: -0.015em;
+  color: var(--cs-ink);
+  margin-bottom: 0.45rem;
+  line-height: 1.2;
+}
+.cs-case-b {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  color: var(--cs-ink-2);
+  line-height: 1.5;
+}
+
+/* ─── Flow diagram (Sunday Brief pipeline) ──────────────────────────── */
+.cs-flow {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 1.6rem 0 2rem;
+  flex-wrap: wrap;
+  overflow-x: auto;
+}
+.cs-flow-step {
+  background: white;
+  border: 2px solid var(--cs-ink);
+  border-radius: 6px;
+  padding: 0.5rem 0.9rem;
+  font-family: var(--font-sans);
+  font-weight: 800;
+  font-size: 0.82rem;
+  letter-spacing: -0.005em;
+  color: var(--cs-ink);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.cs-flow-arrow {
+  color: var(--cs-ink-3);
+  font-size: 1.05rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+/* ─── Prompt code block (dark, copy-able) ───────────────────────────── */
+.cs-prompt-wrap {
+  background: var(--cs-ink);
+  border: 2px solid var(--cs-ink);
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 1.8rem 0 1rem;
+  box-shadow: 7px 7px 0 var(--cs-ink-3);
+}
+.cs-prompt-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.7rem 1.1rem;
+  background: rgba(255, 255, 255, 0.04);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+.cs-prompt-title {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: rgba(250, 245, 236, 0.7);
+  letter-spacing: 0.04em;
+}
+.cs-prompt-copy {
+  font-family: var(--font-sans);
+  font-weight: 800;
+  font-size: 0.78rem;
+  letter-spacing: -0.005em;
+  background: var(--cs-butter);
+  color: var(--cs-ink);
+  border: 2px solid var(--cs-cream);
+  padding: 0.32rem 0.75rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+.cs-prompt-copy:hover {
+  transform: translate(-1px, -1px);
+  border-bottom: 2px solid var(--cs-cream);
+  color: var(--cs-ink);
+}
+.cs-prompt-wrap pre {
+  margin: 0;
+  padding: 1.2rem 1.4rem 1.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  line-height: 1.65;
+  color: rgba(250, 245, 236, 0.92);
+  white-space: pre-wrap;
+  max-height: 30rem;
+  overflow-y: auto;
+}
+
+/* ─── Honest read: two-column gaps + strengths ──────────────────────── */
+.cs-honest-cols {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  margin: 2.4rem 0 0;
+}
+@media (min-width: 820px) {
+  .cs-honest-cols { grid-template-columns: 1fr 1fr; gap: 3.5rem; }
+}
+.cs-honest-col-h {
+  font-family: var(--font-cursive);
+  font-weight: 500;
+  font-size: clamp(1.6rem, 2.4vw, 2rem);
+  color: var(--cs-mauve-deep);
+  margin-bottom: 1.2rem;
+  display: inline-block;
+  transform: rotate(-1.5deg);
+  line-height: 1.2;
+}
+.cs-honest-col-h.strength { color: var(--cs-sage-deep); }
+.cs-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-top: 2px solid var(--cs-ink);
+}
+.cs-list li {
+  padding: 1rem 0;
+  border-bottom: 1px dashed var(--cs-ink);
+}
+.cs-list li:last-child { border-bottom: 2px solid var(--cs-ink); }
+.cs-list-h {
+  font-family: var(--font-sans);
+  font-weight: 900;
+  font-size: 1rem;
+  letter-spacing: -0.015em;
+  color: var(--cs-ink);
+  margin-bottom: 0.35rem;
+  line-height: 1.25;
+}
+.cs-list-h .num {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--cs-ink-3);
+  margin-right: 0.45rem;
+  letter-spacing: 0.04em;
+  font-weight: 700;
+}
+.cs-list-b {
+  font-family: var(--font-sans);
+  font-size: 0.92rem;
+  color: var(--cs-ink-2);
+  line-height: 1.55;
+}
+.cs-honest-kicker {
+  margin-top: 2.2rem;
+  font-family: var(--font-cursive);
+  font-weight: 500;
+  font-size: clamp(1.4rem, 2.2vw, 1.8rem);
+  color: var(--cs-ink);
+  transform: rotate(-1deg);
+  display: inline-block;
+  line-height: 1.3;
+}
+
+/* ─── Coffee options (3 ways) ───────────────────────────────────────── */
+.cs-options {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.2rem;
+  margin: 2.4rem 0 2rem;
+}
+@media (min-width: 820px) {
+  .cs-options { grid-template-columns: repeat(3, 1fr); }
+}
+.cs-option {
+  background: white;
+  border: 2px solid var(--cs-ink);
+  border-radius: 10px;
+  padding: 1.3rem 1.3rem 1.4rem;
+  box-shadow: 5px 5px 0 var(--cs-ink);
+  position: relative;
+  transition: transform 0.2s ease;
+}
+.cs-option:nth-child(1) { transform: rotate(-1.2deg); }
+.cs-option:nth-child(2) { transform: rotate(0.7deg); background: var(--cs-butter); }
+.cs-option:nth-child(3) { transform: rotate(-0.5deg); }
+.cs-option:hover { transform: rotate(0) translate(-2px, -2px); }
+.cs-option-n {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  color: var(--cs-ink-3);
+  text-transform: uppercase;
+  margin-bottom: 0.45rem;
+}
+.cs-option-h {
+  font-family: var(--font-sans);
+  font-weight: 900;
+  font-size: 1.05rem;
+  letter-spacing: -0.018em;
+  color: var(--cs-ink);
+  margin-bottom: 0.55rem;
+  line-height: 1.2;
+}
+.cs-option-b {
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  color: var(--cs-ink-2);
+  line-height: 1.55;
+}
+
+/* ─── Stop card link to the preventive-healthcare report ────────────── */
+.cs-stop-link {
+  display: inline-block;
+  margin-top: 0.6rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.02em;
+  color: var(--cs-mauve-deep);
+  border-bottom: 1px solid var(--cs-mauve-deep);
+  padding-bottom: 1px;
+}
+.cs-stop-link:hover { color: var(--cs-ink); border-bottom-color: var(--cs-ink); }
+
+/* ─── Rose / beige palette for the flags section ─────────────────────── */
+:root {
+  --cs-rose: #ECCEC5;
+  --cs-rose-deep: #7A4438;
+}
+.cs-section--rose { background: var(--cs-rose); }
+
+/* Flag cards (red flag, green flag, beige flag) */
+.cs-flags {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.1rem;
+  margin: 2.5rem 0 1rem;
+}
+@media (min-width: 760px) {
+  .cs-flags { grid-template-columns: 1fr 1fr; gap: 1.4rem; }
+}
+.cs-flag {
+  background: white;
+  border: 2px solid var(--cs-ink);
+  border-radius: 8px;
+  padding: 1.2rem 1.3rem 1.3rem;
+  box-shadow: 5px 5px 0 var(--cs-ink);
+  transition: transform 0.2s ease;
+}
+.cs-flag:nth-child(1) { transform: rotate(-1deg); }
+.cs-flag:nth-child(2) { transform: rotate(0.8deg); }
+.cs-flag:nth-child(3) { transform: rotate(-0.6deg); }
+.cs-flag:nth-child(4) { transform: rotate(1deg); }
+.cs-flag:nth-child(5) { transform: rotate(-0.5deg); }
+.cs-flag:nth-child(6) { transform: rotate(0.9deg); }
+.cs-flag:hover { transform: rotate(0) translate(-2px, -2px); }
+.cs-flag-meta {
+  display: flex;
+  align-items: baseline;
+  gap: 0.7rem;
+  margin-bottom: 0.55rem;
+  flex-wrap: wrap;
+  padding-bottom: 0.55rem;
+  border-bottom: 1px dashed var(--cs-cream-deep);
+}
+.cs-flag-year {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
+  color: var(--cs-ink-3);
+  font-weight: 700;
+}
+.cs-flag-place {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 900;
+  letter-spacing: -0.015em;
+  color: var(--cs-ink);
+}
+.cs-flag-body {
+  font-family: var(--font-sans);
+  font-size: 0.93rem;
+  color: var(--cs-ink-2);
+  line-height: 1.6;
+}
+
+/* Self-eval list at the bottom of the flags section */
+.cs-self {
+  margin: 2.8rem 0 0;
+  padding: 1.4rem 0 1.4rem;
+  border-top: 2px solid var(--cs-ink);
+  border-bottom: 2px solid var(--cs-ink);
+}
+.cs-self-h {
+  font-family: var(--font-cursive);
+  font-weight: 500;
+  font-size: clamp(1.4rem, 2.2vw, 1.85rem);
+  color: var(--cs-rose-deep);
+  margin-bottom: 1rem;
+  display: inline-block;
+  transform: rotate(-1deg);
+  line-height: 1.2;
+}
+.cs-self-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.cs-self-list li {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  color: var(--cs-ink-2);
+  line-height: 1.6;
+  padding: 0.4rem 0 0.4rem 1.6rem;
+  position: relative;
+}
+.cs-self-list li::before {
+  content: "→";
+  color: var(--cs-ink-3);
+  position: absolute;
+  left: 0.2rem;
+  font-weight: 700;
+}
+
+/* ─── Social icon buttons (LinkedIn, X, GitHub) ──────────────────────── */
+.cs-social {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background: white;
+  border: 2px solid var(--cs-ink);
+  border-radius: 100px;
+  color: var(--cs-ink);
+  transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease,
+              box-shadow 0.2s ease;
+  text-decoration: none;
+}
+.cs-social:hover {
+  background: var(--cs-ink);
+  color: var(--cs-cream);
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0 var(--cs-ink-3);
+  border-bottom: 2px solid var(--cs-ink);
+}
+.cs-social svg {
+  width: 20px;
+  height: 20px;
+  display: block;
+}
+
+/* Footer social row */
+.cs-foot-social {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin: 0 0.5rem;
+  vertical-align: middle;
+}
+.cs-foot-social .cs-social {
+  width: 32px;
+  height: 32px;
+  border-width: 1.5px;
+}
+.cs-foot-social .cs-social svg {
+  width: 14px;
+  height: 14px;
+}
+.cs-foot {
+  line-height: 2;
+}
+.cs-foot-meta-row {
+  margin-bottom: 0.6rem;
+}
+
+/* ─── Prominent journey-stop link (RedSeer report etc.) ─────────────── */
+.cs-stop-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.9rem;
+  padding: 0.5rem 0.85rem;
+  background: var(--cs-mauve);
+  border: 2px solid var(--cs-ink);
+  border-radius: 8px;
+  font-family: var(--font-sans);
+  font-weight: 800;
+  font-size: 0.82rem;
+  letter-spacing: -0.005em;
+  color: var(--cs-ink);
+  text-decoration: none;
+  transition: transform 0.15s ease, background 0.15s ease, color 0.15s ease,
+              box-shadow 0.15s ease;
+  box-shadow: 3px 3px 0 var(--cs-ink);
+}
+.cs-stop-link:hover {
+  background: var(--cs-mauve-deep);
+  color: var(--cs-cream);
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0 var(--cs-ink);
+  border-bottom: 2px solid var(--cs-ink);
+}
+
+/* ─── Lurk row in coffee section ──────────────────────────────────── */
+.cs-lurk {
+  margin-top: 2.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: flex-start;
+}
+.cs-lurk-line {
+  font-family: var(--font-cursive);
+  font-weight: 500;
+  font-size: clamp(1.15rem, 1.9vw, 1.45rem);
+  color: var(--cs-ink-3);
+  transform: rotate(-1deg);
+  display: inline-block;
+  line-height: 1.4;
+  max-width: 50ch;
+}
+.cs-lurk-row {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  flex-wrap: wrap;
+}
+.cs-lurk-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-sans);
+  font-weight: 800;
+  font-size: 0.92rem;
+  letter-spacing: -0.01em;
+  background: var(--cs-butter);
+  color: var(--cs-ink);
+  border: 2px solid var(--cs-ink);
+  border-radius: 100px;
+  padding: 0.65rem 1.1rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  text-decoration: none;
+}
+.cs-lurk-primary:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0 var(--cs-ink);
+  color: var(--cs-ink);
+  border-bottom: 2px solid var(--cs-ink);
+}
+
+/* ─── Mobile responsive tweaks ─────────────────────────────────────── */
+@media (max-width: 760px) {
+  .cs-nav { display: none; }
+  .cs-section { padding: 4rem 1.25rem; }
+  .cs-section-h {
+    font-size: clamp(2.4rem, 11vw, 4rem);
+    margin-bottom: 1.8rem;
+  }
+  .cs-hero { min-height: auto; }
+  .cs-hero-left { padding: 6rem 1.5rem 3rem; }
+  .cs-hero-right { padding: 2rem 1.5rem 4rem; }
+  .cs-hero-headline { font-size: clamp(2rem, 10vw, 3rem); }
+  .cs-window { max-width: 100%; transform: rotate(-1deg); }
+  .cs-mock { max-width: 100%; transform: rotate(-0.4deg); }
+  .cs-flow { gap: 0.35rem; }
+  .cs-flow-step {
+    font-size: 0.74rem;
+    padding: 0.4rem 0.7rem;
+    white-space: nowrap;
+  }
+  .cs-flags { gap: 1rem; }
+  .cs-options { gap: 1.1rem; }
+  .cs-stop { padding: 1.1rem 1.1rem 1.2rem; }
+  .cs-num-card { padding: 1.1rem 1rem; }
+  .cs-flag { padding: 1.1rem 1.1rem 1.2rem; }
+  .cs-prompt-wrap pre { font-size: 0.72rem; padding: 1rem 1.1rem; }
+  .cs-cta-row { flex-direction: column; align-items: stretch; }
+  .cs-cta-button { justify-content: center; }
+  .cs-brand { top: 1.2rem; left: 1.2rem; }
+  .cs-foot { padding: 2rem 1.25rem 3rem; }
+}
+
+/* Prompt code block: keep formatting, allow horizontal scroll for long lines */
+.cs-prompt-wrap pre {
+  white-space: pre;
+  overflow-x: auto;
+}
