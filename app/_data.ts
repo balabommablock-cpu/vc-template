@@ -331,10 +331,10 @@ export const COFFEE_OPTIONS = [
 ];
 
 export const BRIEF_PREVIEW = [
-  "Portfolio Co A · CIR at 83.4%, peers at 60–65%",
-  "Portfolio Co B · DRHP filed last Tuesday. OFS heavy",
-  "Portfolio Co C · Q3 print Thursday. Listed peer moves first",
-  "Portfolio Co D · new senior debt facility. WC worth a call",
+  "A small-finance bank · costs run 83% of income, peers at 60-65%",
+  "A fintech · just filed to IPO, mostly existing investors selling",
+  "A consumer brand · results out Thursday, the listed rival reports first",
+  "A logistics startup · raised fresh debt, worth a call on cash flow",
 ];
 
 export const CONTACT = {

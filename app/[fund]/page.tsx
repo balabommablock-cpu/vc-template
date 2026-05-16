@@ -83,24 +83,29 @@ export default async function FundPage({
       {/* HERO */}
       <section className="cs-hero">
         <div className="cs-hero-left">
-          <div className="cs-window">
-            <div className="cs-window-bar">
-              <span className="cs-window-dot" />
-              <span className="cs-window-dot" />
-              <span className="cs-window-dot" />
-            </div>
-            <div className="cs-window-body">
-              <p className="cs-window-from">
-                Sunday brief · 12 companies · 8 PM IST
-              </p>
-              <p className="cs-window-subject">
-                What I would send you this Sunday
-              </p>
-              {BRIEF_PREVIEW.map((line) => (
-                <p key={line} className="cs-window-line">
-                  {line}
+          <div className="cs-window-wrap">
+            <span className="cs-window-caption">
+              👇 a sample of what I&apos;d send you every Sunday
+            </span>
+            <div className="cs-window">
+              <div className="cs-window-bar">
+                <span className="cs-window-dot" />
+                <span className="cs-window-dot" />
+                <span className="cs-window-dot" />
+              </div>
+              <div className="cs-window-body">
+                <p className="cs-window-from">
+                  Sunday brief · 12 companies · 8 PM IST
                 </p>
-              ))}
+                <p className="cs-window-subject">
+                  This week, the lines that matter
+                </p>
+                {BRIEF_PREVIEW.map((line) => (
+                  <p key={line} className="cs-window-line">
+                    {line}
+                  </p>
+                ))}
+              </div>
             </div>
           </div>
         </div>
@@ -111,6 +116,11 @@ export default async function FundPage({
             I want the <span className="cursive">operator seat</span> after{" "}
             <span className="cursive">the cheque clears.</span>
           </h1>
+          <p className="cs-hero-sub">
+            I&apos;m Rishabh Balabomma, a product leader in Mumbai. This is
+            my application for your growth team, written as a note, not a
+            CV. Four-minute read.
+          </p>
         </div>
       </section>
 
